@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="./styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <title>News homepage</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      
+  }
+  .navbar_mobile span {
+      font-size: 60px;  /* Making it bigger */
+      cursor: pointer;
+      padding: 10px;  /* Additional padding for easier touch */
+      margin-bottom: 10px;
+  }
+  
+  
+  @media (min-width: 350px) {
+    [data-pagination] {
+      font-size: 10pt;
+    }
+  }
+  @media (min-width: 500px) {
+    [data-pagination] {
+      font-size: 12pt;
+    }
+  }
+  @media (min-width: 700px) {
+    [data-pagination] {
+      font-size: 14pt;
+    }
+  }
+  @media (min-width: 900px) {
+    [data-pagination] {
+      font-size: 16pt;
+    }
+  }
+  .hamburger{
+      width: 80px;
+      height: 80px;
+  }
+  
+  .hero_title a:visited {
+      color: inherit; /* this will make the visited link inherit the color of its parent */
+  }
+  
+  :root {
+      --orange: hsl(35, 77%, 62%);
+      --red: hsl(5, 85%, 63%);
+      --white: hsl(36, 100%, 99%);
+      --gray_blue: hsl(233, 8%, 79%);
+      --dark_gray_blue: hsl(236, 13%, 42%);
+      --dark_blue: hsl(240, 100%, 5%);
+  }
+  
+  
+  html {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+  }
+  
+  body {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      min-height: 100vh;
+  }
+  
+  header {
+      grid-area: header;
+  }
+    
+  .hero {
+      grid-area: hero;
+  }
+  
+  .hero_pic{
+      height: 350px;
+  
+  }
+    
+  aside {
+      grid-area: aside;
+  }
+    
+  footer {
+      grid-area: footer;
+  }
+  
+  .container {
+      width: 100%;
+      height: fit-content;
+      overflow-x: hidden;
+      max-width: 90%;
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      grid-template-rows: minmax(min-content, max-content);
+      grid-template-areas: "header header header" "hero hero aside" "hero hero aside" "footer footer footer"   "pagination pagination pagination";
+      gap: 25px;
+    }
+  
+  header {
+      margin-top: 20px;
+  }
+  
+  .navbar_mobile {
+      display:none;
+  }
+  
+  .navbar_desktop {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+  }
+  
+  #menu {
+      display: flex;
+      flex-direction: row;
+  }
+  
+  .logo {
+      width: 60px;
+  }
+  li {
+      list-style: none;
+      padding: 15px;
+  }
+  
+  a {
+      text-decoration: none;
+      color:var(--dark_gray_blue)
+  }
+  
+  #menu a:hover {
+      color:var(--red)
+  }
+  
+  img, picture {
+    display: block;
+    width: 100%;
+  }
+  
+  .footer_pic{
+      height: 115px;
+      width: 145px;
+  
+  }
+  
+  aside {
+      height: fit-content;
+      background-color: var(--veryDarkBlue);
+      width: 100%;
+  
+  }
+  
+  .hero_details {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 20px;
+  }
+  
+  .hero_title {
+      margin-top: 30px;
+      font-size: 2.5rem;
+      font-weight: 800;
+  }
+  
+  .hero_text {
+      margin-top: 30px;
+  
+  }
+  
+  
+  aside {
+      background-color: var(--dark_blue);
+      color:var(--gray_blue);
+      padding: 20px;
+      padding-bottom: 10px;
+  }
+  
+  hr {
+      margin: 30px 5px;
+      color:var(--gray_blue);
+  }
+  
+  aside h2 {
+  
+      color:var(--red);
+      font-size: 2.2rem;
+  }
+  
+  
+  aside a {
+      color:var(--white);
+  }
+  
+  aside a:hover {
+      color:var(--red);
+  }
+  
+  aside h3 {
+      margin: 10px 0;
+  }
+  aside article {
+      margin: 20px 0;
+  }
+  
+  aside > article > p {
+      line-height: .7rem;
+  }
+  
+  
+  footer {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      margin-top: 0px;
+      margin-bottom: 3px;
+  }
+  
+  footer article {
+      display: grid;
+      grid-template-columns:1fr 2fr;
+      gap: 25px;
+  }
+  
+  footer h2 {
+      color:var(--gray_blue);
+      font-size: 2rem;
+  }
+  
+  footer a {
+      color:var(--dark_blue);
+  }
+  
+  footer a:hover {
+      color:var(--red);
+  }
+  
+  footer h3 {
+      margin: 05px 0;
+      font-weight:800;
+  }
+  
+  footer p {
+      line-height: 1.7rem;
+  }
+  
+  @media only screen and (max-device-width: 720px) {
+      .navbar_desktop {
+          display:none;
+      }
+      
+      header {
+          width: 100%;
+          margin-top: 20px;
+      }
+      .logo {
+          width: 20%;
+      }
+      
+      .navbar_mobile {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 1.25rem;
+      }
+  
+      .container {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          width: 90%;
+          max-width: 400px;
+      }
+      .hero_details {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center; 
+      }
+      .hero_text {
+          margin-top: 0px;
+      }
+  
+      .hero_btn {
+          margin-top: 25px;
+      }
+  
+      footer {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;  
+      }
+  
+      /* ... existing styles ... */
+  
+  /* Mobile menu overlay styles */
+  .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      overflow: auto;
+      z-index: 1;
+  }
+  
+  .overlay-content {
+      position: relative;
+      top: 25%;
+      width: 80%;
+      text-align: center;
+      margin-left: 10%;
+      margin-right: 10%;
+  }
+  
+  .overlay a {
+      padding: 10px;
+      text-decoration: none;
+      font-size: 28px;
+      color: white;
+      display: block;
+      transition: 0.3s;
+  }
+  
+  .overlay a:hover, .overlay a:focus {
+      color: var(--red);
+  }
+  
+  .closebtn {
+      position: absolute;
+      top: 20px;
+      right: 45px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+  }
+  
+  .nav-cat{
+      font-size: 20000px;
+  }
+  
+  
+      
+  }
+  
+  .overlay {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.9);
+          overflow: auto;
+          z-index: 1;
+      }
+  
+      .overlay-content {
+          position: relative;
+          top: 25%;
+          width: 80%;
+          text-align: center;
+          margin-left: 10%;
+          margin-right: 10%;
+      }
+  
+      .overlay a {
+          padding: 10px;
+          text-decoration: none;
+          font-size: 28px;
+          color: white;
+          display: block;
+          transition: 0.3s;
+      }
+  
+      .overlay a:hover, .overlay a:focus {
+          color: var(--red);
+      }
+  
+      .closebtn {
+          position: absolute;
+          top: 20px;
+          right: 45px;
+          font-size: 30px;
+          color: white;
+          cursor: pointer;
+      }
+  </style>
+    
+</head>
+<body>
+  <main class="container">
+    <header>
+            
+        <nav class="navbar_desktop">
+            <div class="logo"> 
+                <a href="/"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAulBMVEX////9NFr9UWP9SmH9OFv9TWL9R2D9RF/9Pl39Mln9PV39U2T9SWH9Tl/+iJL9fJL9JlL+g5f9MlX+gI39QVv+cYf+kJz+xMv+e4v/5uv9SFz/2+D+iJn9NVb/4OX+x8z+vcP/7/L9VWz+tcD/0dj9R2f+lp//vsT9P1b+r7f+coL9JE7+i5/9P2P/pq3+hY/+m6T9M0n9ZXT9XWz9n6v9G0P9WXL/9vf9Z3/+qrf+dIn+mqv9T279EkmHJCV4AAAIlElEQVR4nO2di1qbSBSAIYFwkVikbBUimFhjaaPWba26a/v+r7UzwwyXQJIDCEP2O//WBE+YYf65nJFkaxUFQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAE+V8QnN+e1vFwAyl99b228C5uv8R9+2yz+hQm81rC5ALQmse/60vvIglPg/6tCgRheLKTeXh+uIarH8lkdxV1tc5Bk+OdWP2c72vMBKKoLH+GjRwn8wFH8ZGM4FbrJuxrIhSvALWsHk6qHVWVziLz097FsqYxlwkTos+UE/4Nj4AUleB7wuo54aXSJy5VjtBQOFi6uQmFCXcSTShEQBOVVMWnalYZ764scsIj9Cj50rNYxmM4ychHcSsSLkF1vTzM51wqr2G7Zv5aeNuvV85tuCVVC2yiKsriIqwWPqlegaSawRbibVjo6nIj2igq6TAWCmdTsxyZf+9Vq8Cnmk7vMorK4geoxvnHXrUKQA2ha5HwlMyP0nASgrPf1c/DlYYjNIRPVCX4drDWURrO4Yovj8noDHVdn+jlRrBIKQafqMoy0fNqKjVP9MENUxWdtYYdc+HCMX2Epxvl5jpkpfW00qw2Pa1uSMPUShdPmY9oWSEy0X3YD3AUshjzDpvwccwiQxvm86nQpLxZ2TTTdfhaVF4++mLoJnrpElIMdV0MYDpXRYRH81ADReU0EfOgwPDrUG+Iv4TX/pDsqmXMhnqDjKp89eUb7mrCHhqkG+XzjlEc9Rg2U/xarzjuMXwPxbEbTpukm9q1OHZDfZp0HMXRG5JRbKD4VFUcj+G0ciiemih+TAplp8MakmyeXnbKHqbsYJo1Z6rXRNLTpskSfpkLn1UuYwyDaYq+9Zwd6bsjPnzrf/nm5/XQisKLHqXK3CbT1jS507ielYoOaLh6nu1o//sq3pR7ckBDZeV3UWxy118qOKChEl8bHRSX4Os8FhWHHENFWVz7W+12yH/b7IjAt36SbSSNIVWcOaS5juMUVKqRaRpxCraOM4OvxVhkG2dwQyUma9GZpu2nCrmHiExFRJyRRRooXm0cUX5oQ7ItGlmbHUeMIJ+uWcQRkWkxMoNv/U+JI8uQzCDfmRHI1dkD7+yZQ7+Z8sgsf5ylvcFemMHTzbNBu4hcYXhDmm5mGU7lKIs4pYiTRsDpZuHzOiQYKrFjOGUJp6LFBrUuAl6LDwnrFCmGSuAbe9xm25HyiIM/l/+WThUphnQtVqcpFOhaXMg0LK/FpkTAifoUSTQkikZ7ReBafGHXkGVItv72igYwo155Mg2VwGk/UY3oM+gaF75Mw2K6aa4Iu5ki+5JMw0q6MWqOdo8iaKKSZCPTUIlnPpUxKFwsPTREiDxkL4pX0iMDlG5W14ZUQ7L1+7zFRqon3IzsebYdyIiWgCt89uQaKrHuG62BKL48Szaka7GDImCinv+SbKgs1ma/ircNPizvh1jreRTlExg9r0X5xJ3W4lJ28yH0nm7kE3eaqEehGETtM6p5HBM17rBpmMA7Dcl0WYumdxQTdbH26TCWh9I00688XoiYWcQ8jrUYR2bafNpkIWGm1jxiMh1DvMTVj0cx4M02BcbWc/GofGya3lGsxfjabE802N9v2sX5xergOYvfWgdF2RP17M/b4ZNi47DJaBUvo83hQaRbf3u8Ze8W+7iMok+A0+J1l4kqNd1cRqYH+eucndaiJzPdEMPoDHIiuevvoChxLRJD0wO9oxB7XUZRniI11J5fIKcGNlO0TfFo8+ZXIzk8Ysvb+i892sNPoHPjdYeUKu1mihnaGuwXACy6ZFRZE5UZmtFfsLNjUzPtwlTk83Pn5CxFJCleeqR9tr1Zwk4PWLqxqZXNvuiDLSLs0KQvpH+2InK2fmZIrr4G/qIKshaFll22yL/bFZGTbqghxQNtigrd+qNSw3nzIRHTdiVMVGEI71+WbirNByJhLWaGGjCfsq2/raCtDa+YGdrRM7RMYEetFW136LWYG9oubN9X0nTTfhSXPerUUDC0YT+fUhadFIe90zgrGGrQLYMo2kezFqmhJlrrvYLLBZ6aN7mx4pBrkRmmjlqDXZGuRUsjxXhBWgF70rLvtiMaj9CDIddiOoYcW3P/AZcka1GzRbkC9naEX8AunuIO91vpzjytxAb+m9TI1t+a6BV0S/oebBtq9/DejT21tWKDnuxIxdCCJ1Sy9VttDV3A27TvQ8VQ82DvaTAW60pxIN5g/z9N1VBrsGcQxZaj6P3bn1OZGkNt8wFefqG1W4se8F2F7tQZahv4tqgEbivFAQ3duus3UYzv26xFS7Kh5jZQbJVupBs2GsXFffN0I3uWas3STew2VhzUMMsUKjnK08bmFfDBIifQCooqq6eUf6qRIQ3TK+dtUEVTvGf4TzdkX1RzGY31lFqOaKXIsIYlNP5F8Nbwn1FJuuHFeWeJutSs+0oRiYZFrPsGdxqataemCiMxVK0N/H4xcJsojsVQVV14SiVb/zEaqu4r/O2pNVxxRIaqew9+a4xs/cdoqFrwu9UYvBZHZaiqm9/QmRqowIk6MkPVs+CfTMEUx2ZIZuoH4DDuU7TyOTzgPX7B0Co2QUTEoXsPHMZFsRQ/svKK+ZE72Ps0d27aCNEE+mzlESuPWH+A+wbb+vN6hGg54l72LJZx47Ir017mSlbe75aVvsIjrvUGehuObv2ivqyqQoR112AfXazu2cXTHubzqRixChGyGn+D9kayFnm/iLJW1lM8MuDb+m+btHcLqDsjNOMsAJWSrZ9PifqK1CbvknRltXa3m7EX170D3BnHByp14XfX3VmtN40ULffP2+H2Bftq3TT4cOQ9eHm732zcJvwCbNerO6u+0s1Gg8yC92V1c3f2oQmgT+KDf+oqPbs7H/Zfe0IQBEEQBEEQBEEQBEEQBEEQBEEQBEEQBEEQBEEQBEEQBJHHfxvSKwnlvdGuAAAAAElFTkSuQmCC"" alt=""></a>
+                
+            </div>
+            <ul id="menu">
+                {% for category in categories %}
+                <li>
+                    <a class="nav-cat" href="{% url 'category_page' category=category %}"><p>{{ category }}</p></a>
+                </li>
+                {% endfor %}
+            </ul>
+        </nav>
+
+
+        <div class="navbar_mobile">
+            <div class="logo">
+              <a href="/"><img src="data:image/png;base64,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"" alt=""></a>
+            </div>
+            <span onclick="openNav()">&#9776;</span> <!-- This is the hamburger icon -->
+          </div>
+        
+          <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div class="overlay-content">
+                {% for category in categories %}
+                    <a class="nav-cat" href="{% url 'category_page' category=category %}"><p>{{ category }}</p></a>
+                {% endfor %}
+            </div>
+          </div>
+    </header>
+
+
+        <section class="hero">
+            <div>
+                <img class="hero_pic" src="{{ latest_articles.0.image }}" alt="Featured article image">
+            </div>
+            <div class="hero_details">
+                <a href="{{ latest_articles.0.link }}">
+                    <h1 class="hero_title">{{ latest_articles.0.title }}</h1>
+                </a>
+            </div>
+        </section>
+
+        <aside>
+            <h2>Latest News</h2>
+            {% for news_item in latest_articles|slice:"1:4" %}
+            <article class="aside_article">
+                <a href="{{ news_item.link }}" class="aside_link" target="_blank">
+                    <h3>{{ news_item.title }}</h3>
+                </a>
+                <p>{{ news_item.website }} | {{ news_item.category }}</p>
+            </article>
+            <hr />
+            {% endfor %}
+        </aside>
+
+        <footer>
+            {% for news_item in latest_articles|slice:"4:" %}
+            <article>
+                <div>
+                    <img class="footer_pic" src="{{ news_item.image }}" alt="News thumbnail">
+                </div>
+                <div>
+                    <h2>0{{ forloop.counter }}</h2>
+                    <a href="{{ news_item.link }}" target="_blank">
+                        <h3>{{ news_item.title }}</h3>
+                    </a>
+                    <p>{{ news_item.website }}</p>
+                </div>
+            </article>
+            {% endfor %}
+        </footer>
+    </main>
+
+
+  <script>
+    function openNav() {
+      document.getElementById("myNav").style.display = "block";
+    }
+
+    function closeNav() {
+      document.getElementById("myNav").style.display = "none";
+    }
+    </script>
+</body>
+</html>
