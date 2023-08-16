@@ -46,6 +46,9 @@ class CategoryPageView(ListView):
 
         categories = NewsItem.objects.values_list('category', flat=True).distinct()
         context['categories'] = categories
+
+        context['current_category'] = self.kwargs['category']
+
         return context
 
     def get_queryset(self):

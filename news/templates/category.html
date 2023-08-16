@@ -21,6 +21,10 @@
     padding: 0;
     
 }
+
+.aside{
+    color: black;
+}
 .navbar_mobile span {
     font-size: 60px;  /* Making it bigger */
     cursor: pointer;
@@ -121,6 +125,10 @@
 
 .hero_title a:visited {
     color: inherit; /* this will make the visited link inherit the color of its parent */
+}
+
+.hero_title{
+    color: black;
 }
 
 :root {
@@ -428,7 +436,9 @@ footer p {
     font-size: 20000px;
 }
 
-
+.cat{
+    color: aliceblue;
+}
     
 }
 
@@ -511,6 +521,8 @@ footer p {
                     {% endfor %}
                 </div>
               </div>
+
+              <h1 class="cat">{{ current_category }}</h1>
         </header>
 
         <section class="hero">
