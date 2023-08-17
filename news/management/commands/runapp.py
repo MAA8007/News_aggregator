@@ -6,10 +6,6 @@ class Command(BaseCommand):
     help = 'Run the scrape_news command followed by the runserver command'
 
     def handle(self, *args, **options):
-        self.stdout.write(self.style.WARNING('Deleting all articles...'))
-        NewsItem.objects.all().delete()
-        self.stdout.write(self.style.SUCCESS('All articles deleted!'))
-
         self.stdout.write(self.style.SUCCESS('Starting scrape_news...'))
         management.call_command('scrape_news', *args, **options)
         
