@@ -12,7 +12,7 @@ def normalize_datetime_to_django_format(dt_str):
     return dt.strftime('%Y-%m-%d %H:%M:%S%z')
 
 def fetch_feed(url, main_tag, link_tag, title_tag, image_tag, image_attr, category, website, date_tag):
-    response = requests.get(url, verify=True)
+    response = requests.get(url)
     soup = BeautifulSoup(response.text, 'lxml-xml')
     entries = []
 
