@@ -164,6 +164,7 @@ rss_feed_details = [
     ('http://www.nytimes.com/services/xml/rss/nyt/Business.xml', 'item', 'link', 'title', 'media:content', 'url', 'Global News', "New York Times", 'pubDate'),
      ('http://www.nytimes.com/services/xml/rss/nyt/HomePage.xml', 'item', 'link', 'title', 'media:content', 'url', 'Global News', "New York Times", 'pubDate'),
      ('http://feeds.feedburner.com/dawn-news', 'item', 'link', 'title',  'media:content', 'url', 'Pakistan', "Dawn", 'pubDate'),
+     ('https://feeds.feedburner.com/dawn-news-world', 'item', 'link', 'title',  'media:content', 'url', 'Global News', "Dawn", 'pubDate'),
     ('https://www.theverge.com/rss/reviews/index.xml', 'entry', 'id', 'title', None, None, 'Science & Technology', 'The Verge', 'published'),
     ('https://www.nytimes.com/wirecutter/rss/', 'item', 'link', 'title', 'description', 'src', 'Science & Technology', "New York Times Wirecutter", 'pubDate')
 ]
